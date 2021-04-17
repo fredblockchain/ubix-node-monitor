@@ -7,10 +7,10 @@ services:
       # SPRING_PROFILES_ACTIVE: set 'log-fluentd' to send logs to local fluentd, 'default' otherwise. NOT TESTED YET
       SPRING_PROFILES_ACTIVE: default
       SPRING_APPLICATION_JSON: '{
-          "telegram.name":"NodeMoniTest",
-          "telegram.token":"1764833931:AAHZ_KmP4nm-6O7oVieiO6UNrczEUDsBW84",
-          "telegram.chatId":"160633529",
-          "node.ubix.address":"c9d6fed9f17cb5aa28332b21dd37e0ff1a6b48d6",
-          "price.coinmarketcap.apikey":"7077a16c-ef01-4ece-987d-70aa46203e86",
-          "global.time.utc.offset":"120"
+          "telegram.name":"the name of your telegram bot",
+          "telegram.token":"the token of your telegram bot",
+          "telegram.chatId":"the chat id of your own telegram account",
+          "node.ubix.address":"the ubix address linked to your node without Ux",
+          "price.coinmarketcap.apikey":"the apikey of your coinmarket cap account",
+          "global.time.utc.offset":"0"
         }'
