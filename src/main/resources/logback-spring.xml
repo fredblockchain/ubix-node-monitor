@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+    <springProfile name="default">
+        <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+            <!-- encoders are assigned the type
+                 ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+            <encoder>
+                <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            </encoder>
+        </appender>
+
+        <root level="info">
+            <appender-ref ref="STDOUT" />
+        </root>
+    </springProfile>
+    <springProfile name="log-fluentd">
+        <!-- https://github.com/sndyuk/logback-more-appenders/blob/master/src/test/resources/logback-appenders-fluentd.xml -->
+        <appender name="FLUENT_SYNC" class="ch.qos.logback.more.appenders.DataFluentAppender">
+            <tag>node-monitor</tag>
+            <remoteHost>127.0.0.1</remoteHost>
+            <port>24224</port>
+        </appender>
+        <appender name="fluentd" class="ch.qos.logback.classic.AsyncAppender">
+            <!-- Max queue size of logs which is waiting to be sent (When it reach to the max size, the log will be disappeared). -->
+            <queueSize>999</queueSize>
+            <!-- Never block when the queue becomes full. -->
+            <neverBlock>true</neverBlock>
+            <!-- The default maximum queue flush time allowed during appender stop.
+                 If the worker takes longer than this time it will exit, discarding any remaining items in the queue.
+                 10000 millis
+             -->
+            <maxFlushTime>1000</maxFlushTime>
+            <appender-ref ref="FLUENT_SYNC" />
+        </appender>
+        <root>
+            <level value="info" />
+            <appender-ref ref="fluentd" />
+        </root>
+    </springProfile>
+</configuration>
