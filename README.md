@@ -27,7 +27,7 @@ I don't have an extended experience in java/spring development and at using plat
 There is a lot of room for improvement :)
 
 ## Installation
-You may do the whole process of compiling and running the app, or use directly use the docker-compose file provided [here]()
+You may do the whole process of compiling and running the app, or use directly use the docker-compose file provided [here](docker/)
 
 ### Telegram bot
 You need to create a telegram bot before being able to connect the app to telegram.
