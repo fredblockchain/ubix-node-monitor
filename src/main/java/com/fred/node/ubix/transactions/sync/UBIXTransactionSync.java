@@ -45,6 +45,9 @@ public class UBIXTransactionSync {
         boolean keepLoading = true;
         int pageNb = 0;
 
+        // While there is no persistence, and the bot only provides info for the last 7 days, let's we use a time limit in order to not load older transactions.
+        long timeLimit = System.currentTimeMillis()/1000 - 650000;
+
         //log.info("last transaction was: "+lastKnownTransactionID);
         while (keepLoading) {
             log.info("retrieve page " + pageNb);
@@ -58,6 +61,9 @@ public class UBIXTransactionSync {
 
                 for (UBIXTransaction t : currentPage.getTransactions()) {
                     if (lastKnownTransactionID != null && lastKnownTransactionID.equals(t.getId())) {
+                        keepLoading = false;
+                    }
+                    if ( timeLimit > t.getTimestamp()) {
                         keepLoading = false;
                     }
                     if(keepLoading) {

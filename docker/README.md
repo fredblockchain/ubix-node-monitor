@@ -1,11 +1,23 @@
 #Docker
-In order to run this monitor on docker, follow the following steps:
+In order to run this monitor on docker, follow the steps explained below.
 
-1. Generate the jar of the app with maven
+The source is available in github [here](https://github.com/fredblockchain/ubix-node-monitor)
+
+For detailed info regarding the use of the app, please consult this repository.
+## Requirements
+
+* Docker and Docker compose are required.
+* It is NOT required to run it in the same server as the node.
+
+## Pre steps
+If you choose to generate the app from the source, please follow the following pre steps.
+
+1. Generate the jar of the app with Maven
 2. Copy the generated jar in this directory
-3. Edit the configuration in the docker-compose.yml file. Please refer to the main readme file of this repo
-4. Run docker compose on this directory to generate the docker image, create the container and run it
+
+## Install and run on Docker
+3. Edit the configuration in the docker-compose.yml file. Please refer to the main readme file of the github repo,
+4. Run docker compose on this directory to generate the docker image, create the container and run it.
+   The app will start synching automatically
 5. In case the docker file or app's jar have changed, remember to run "docker-compose build" to force rebuilding the docker image.
 
-###TODOs
-Perform steps 1 and 2 automatically with Maven
