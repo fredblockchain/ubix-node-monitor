@@ -22,12 +22,16 @@ Thanks to [Ruben Bermudez](https://github.com/rubenlagus) for his great [Telegra
 * This app doesn't require your UBIX private key or keystore file, only the public address connected to your node and no one related to this app will ever ask you for personal information.
 * Being a personal project, I may include functionality in the future to cover some very specific needs, although I will try to make then de activable
 
+### IMPORTANT: security
+This app runs without needing access to your node. the only link to the node is the public address, which can be accessed from anywhere.
+In order to keep you node safe I recommend no to run this app or any other application in the same server. 
+
 ### Project background
 I don't have an extended experience in java/spring development and at using platforms like Docker, so there may be a lot of best practices to apply to this project.
 There is a lot of room for improvement :)
 
 ## Installation
-You may do the whole process of compiling and running the app, or use directly use the docker-compose file provided [here](docker/)
+You may do the whole process of compiling and running the app, or use directly use the docker-compose file provided [here](docker/README.md)
 
 ### Telegram bot
 You need to create a telegram bot before being able to connect the app to telegram.
