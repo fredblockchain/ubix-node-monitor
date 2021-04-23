@@ -1,15 +1,25 @@
 package com.fred.node.monitor.price.coinmarketcap.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Quote {
-    private final FiatData usd;
 
-    public Quote(@JsonProperty("USD") FiatData usd) {
-        this.usd = usd;
+
+    private double price;
+
+    @JsonAnySetter
+    public void setFiatData(String key, Object value) throws JsonProcessingException {
+        java.util.LinkedHashMap tmp = (java.util.LinkedHashMap) value;
+        this.price = (Double) tmp.get("price");
     }
 
-    public FiatData getUsd() {
-        return usd;
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

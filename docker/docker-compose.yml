@@ -12,7 +12,8 @@ services:
           "telegram.chatId":"the chat id of your own telegram account",
           "node.ubix.address":"the ubix address linked to your node without Ux",
           "price.coinmarketcap.apikey":"the apikey of your coinmarket cap account",
-          "global.time.utc.offset":"0"
+          "global.time.utc.offset":"0",
+          "price.currency.code.iso":"EUR",
         }'
 
 # Example of configuration. Please note the data is fake a this a NON working configuration

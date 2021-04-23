@@ -4,6 +4,7 @@ import com.fred.node.chain.StatusService;
 import com.fred.node.chain.model.Transaction;
 import com.fred.node.monitor.model.*;
 import com.fred.node.monitor.price.PriceService;
+import com.fred.node.monitor.price.TokenPrice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -98,7 +99,7 @@ public class TelegramMonitorBot extends TelegramLongPollingBot {
                 response = this.OneDay(1,"Yesterday's rewards");
 
             } else if("/week".equals(message)){
-                double price = this.priceService.getPrice();
+                TokenPrice price = this.priceService.getPrice("UBX");
                 double totalDays = 0;
                 DailySummary ds = this.monitorService.getLastDays(7);
                 response = "This week's rewards:\n";
@@ -107,7 +108,7 @@ public class TelegramMonitorBot extends TelegramLongPollingBot {
                             " - "+ dd.getReward()+"\n";
                     totalDays += dd.getReward();
                 }
-                response += "Value: $"+this.formatPrice(totalDays*price);
+                response += "Value: "+this.formatPrice(totalDays*price.getPrice())+ price.getCurrencyIsoCode();
             } else {
                 response = "yeah... sure...";
             }
@@ -216,11 +217,11 @@ public class TelegramMonitorBot extends TelegramLongPollingBot {
     }
 
     private String OneDay(int dayID, String title) {
-        double price = this.priceService.getPrice();
+        TokenPrice price = this.priceService.getPrice("UBX");
 
         DayDetail dd = this.monitorService.getDayDetail(dayID);
         String response = title+":\n"+
-                "Total: "+ dd.getTotal()+"--> $"+this.formatPrice(dd.getTotal()*price)+"\n";
+                "Total: "+ dd.getTotal()+"--> "+this.formatPrice(dd.getTotal()*price.getPrice())+price.getCurrencyIsoCode()+"\n";
         for(Reward d: dd.getRewards()) {
             response += d.getDate().toLocalTime().format(timeFormat)+
                     //response += d.getDate().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)+

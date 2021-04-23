@@ -13,8 +13,10 @@ public class Transaction {
     private final String toAddr;
     private final double value;
     private final LocalDateTime date;
+    private final double fiatValue;
+    private final String fiatID;
 
-    public Transaction(String chain, String address, String id, String fromAddr, String toAddr, double value, LocalDateTime date) {
+    public Transaction(String chain, String address, String id, String fromAddr, String toAddr, double value, LocalDateTime date, double fiatValue, String fiatID) {
         this.chain = chain;
         this.address = address;
         this.id = id;
@@ -22,6 +24,8 @@ public class Transaction {
         this.toAddr = toAddr;
         this.value = value;
         this.date = date;
+        this.fiatValue = fiatValue;
+        this.fiatID = fiatID;
     }
 
     public String getAddress() {
@@ -60,5 +64,13 @@ public class Transaction {
 
     public LocalDateTime getDate() {
         return date;
+    }
+
+    public double getFiatValue() {
+        return fiatValue;
+    }
+
+    public String getFiatID() {
+        return fiatID;
     }
 }

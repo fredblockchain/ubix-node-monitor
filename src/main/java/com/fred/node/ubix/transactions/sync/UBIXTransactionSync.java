@@ -96,6 +96,6 @@ public class UBIXTransactionSync {
                 tSrc.getInputs().get(0).getFrom(),
                 address,
                 tSrc.getValue(),
-                LocalDateTime.ofEpochSecond(tSrc.getTimestamp(),0, ZoneOffset.UTC) );
+                LocalDateTime.ofEpochSecond(tSrc.getTimestamp(),0, ZoneOffset.UTC), 0, "");
     }
 }
