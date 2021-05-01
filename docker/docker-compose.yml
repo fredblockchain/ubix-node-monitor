@@ -2,6 +2,7 @@ version: "3"
 services:
   nodemonitor:
     build: .
+    image: fredi/ubix-node-monitor
     container_name: ubix-node-monitor
     environment:
       # SPRING_PROFILES_ACTIVE: set 'log-fluentd' to send logs to local fluentd, 'default' otherwise. NOT TESTED YET
@@ -13,7 +14,7 @@ services:
           "node.ubix.address":"the ubix address linked to your node without Ux",
           "price.coinmarketcap.apikey":"the apikey of your coinmarket cap account",
           "global.time.utc.offset":"0",
-          "price.currency.code.iso":"EUR",
+          "price.currency.code.iso":"EUR"
         }'
 
 # Example of configuration. Please note the data is fake a this a NON working configuration
@@ -23,5 +24,6 @@ services:
   #          "telegram.chatId":"160123456",
   #          "node.ubix.address":"c9d6fed9f17cb5aa12345b21dd98e0ff1a6b12d6",
   #          "price.coinmarketcap.apikey":"8087a16c-ef02-4ese-987d-70aa76543e86",
-  #          "global.time.utc.offset":"120"
+  #          "global.time.utc.offset":"120",
+  #          "price.currency.code.iso":"EUR"
   #        }'
