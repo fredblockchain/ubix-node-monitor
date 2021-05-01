@@ -4,26 +4,9 @@ services:
     build: .
     image: fredi/ubix-node-monitor
     container_name: ubix-node-monitor
+    volumes:
+      - ../config:/var/app/config
     environment:
       # SPRING_PROFILES_ACTIVE: set 'log-fluentd' to send logs to local fluentd, 'default' otherwise. NOT TESTED YET
       SPRING_PROFILES_ACTIVE: default
-      SPRING_APPLICATION_JSON: '{
-          "telegram.name":"the name of your telegram bot",
-          "telegram.token":"the token of your telegram bot",
-          "telegram.chatId":"the chat id of your own telegram account",
-          "node.ubix.address":"the ubix address linked to your node without Ux",
-          "price.coinmarketcap.apikey":"the apikey of your coinmarket cap account",
-          "global.time.utc.offset":"0",
-          "price.currency.code.iso":"EUR"
-        }'
-
-# Example of configuration. Please note the data is fake a this a NON working configuration
-  # SPRING_APPLICATION_JSON: '{
-  #          "telegram.name":"mySuperBot",
-  #          "telegram.token":"1764111131:AAHZ_KmP4nm-6O7oVieiO6dt4GhtBW84",
-  #          "telegram.chatId":"160123456",
-  #          "node.ubix.address":"c9d6fed9f17cb5aa12345b21dd98e0ff1a6b12d6",
-  #          "price.coinmarketcap.apikey":"8087a16c-ef02-4ese-987d-70aa76543e86",
-  #          "global.time.utc.offset":"120",
-  #          "price.currency.code.iso":"EUR"
-  #        }'
+      SPRING_CONFIG_LOCATION: /var/app/config/application.properties

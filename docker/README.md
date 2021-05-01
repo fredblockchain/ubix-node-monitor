@@ -16,8 +16,10 @@ If you choose to generate the app from the source, please follow the following p
 2. Copy the generated jar in this directory
 
 ## Install and run on Docker
-3. Edit the configuration in the docker-compose.yml file. Please refer to the main readme file of the github repo,
-4. Run docker compose on this directory to generate the docker image, create the container and run it.
+3. Copy the application.properties file in a directory which path is ../config from docker-compose path, and set the correct values within this file
+4. Edit the configuration in the docker-compose.yml file. Please refer to the main readme file of the github repo,
+5. Run docker compose on this directory to generate the docker image, create the container and run it.
    The app will start synching automatically
-5. In case the docker file or app's jar have changed, remember to run "docker-compose build" to force rebuilding the docker image.
+
+In case the docker file or app's jar have changed, remember to run "docker-compose build" to force rebuilding the docker image.
 
