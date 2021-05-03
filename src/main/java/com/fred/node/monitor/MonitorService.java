@@ -3,7 +3,7 @@ package com.fred.node.monitor;
 import com.fred.node.chain.StatusService;
 import com.fred.node.chain.data.TransactionService;
 import com.fred.node.monitor.model.*;
-import com.fred.node.monitor.price.PriceService;
+import com.fred.node.price.PriceService;
 import com.fred.node.ubix.RewardsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,7 +42,7 @@ public class MonitorService {
     }
 
     public DailySummary getLastDays(long days) {
-        ArrayList<DaySummary> res = new ArrayList<DaySummary>();
+        ArrayList<DaySummary> res = new ArrayList<>();
 
         for(int i = 0; i<days; i++) {
             DayDetail dd = this.rewardsService.getInfoForDay(i);

@@ -3,12 +3,11 @@ package com.fred.node.monitor;
 import com.fred.node.chain.StatusService;
 import com.fred.node.chain.model.Transaction;
 import com.fred.node.monitor.model.*;
-import com.fred.node.monitor.price.PriceService;
-import com.fred.node.monitor.price.TokenPrice;
+import com.fred.node.price.PriceService;
+import com.fred.node.price.TokenPrice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -29,7 +28,6 @@ import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 
 
 /**
@@ -66,7 +64,7 @@ public class TelegramMonitorBot extends TelegramLongPollingBot {
         this.botName = name;
         this.chatID = chatId;
 
-        TelegramBotsApi botsApi = null;
+        TelegramBotsApi botsApi;
         try {
             botsApi = new TelegramBotsApi(DefaultBotSession.class);
             botsApi.registerBot(this);
@@ -87,7 +85,7 @@ public class TelegramMonitorBot extends TelegramLongPollingBot {
                 return;
             }
 
-            String response = "";
+            String response;
             String message = update.getMessage().getText();
             if("/status".equals(message)) {
                 response = this.buildStatusMessage("UBX");

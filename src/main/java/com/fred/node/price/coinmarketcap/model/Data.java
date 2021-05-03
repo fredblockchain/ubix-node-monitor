@@ -1,4 +1,4 @@
-package com.fred.node.monitor.price.coinmarketcap.model;
+package com.fred.node.price.coinmarketcap.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

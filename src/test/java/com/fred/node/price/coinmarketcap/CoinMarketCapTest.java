@@ -1,7 +1,6 @@
-package com.fred.node.monitor.price.coinmarketcap;
+package com.fred.node.price.coinmarketcap;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -36,11 +36,11 @@ public class UBIXTransactionSync {
 
     }
 
-    ArrayList<Transaction> getTransactionsUntil(String address, String lastKnownTransactionID) {
+    ArrayList<Transaction> getTransactionsUntil(String address, String lastKnownTransactionID) throws IOException {
         // TODO make calls in parallel:
         // https://spring.io/guides/gs/async-method/
 
-        ArrayList<Transaction> transactions = new ArrayList<Transaction>();
+        ArrayList<Transaction> transactions = new ArrayList<>();
 
         boolean keepLoading = true;
         int pageNb = 0;
@@ -52,7 +52,7 @@ public class UBIXTransactionSync {
         while (keepLoading) {
             log.info("retrieve page " + pageNb);
             UBIXTransactionPage currentPage = new UBIXTransactionPage(address, pageNb);
-            try {
+
                 if(this.statusService !=null)
                     this.statusService.updateSyncInfo("synching page "+ pageNb);
                 else
@@ -73,17 +73,12 @@ public class UBIXTransactionSync {
 
                 if (currentPage.getTransactions().size() == 0) keepLoading = false;
                 pageNb++;
-                //if (pageNb > 0) keepLoading = false; // test purpose
-                //wait(10000,0);
-            } catch (IOException e) {
-                e.printStackTrace();
-                keepLoading = false;
-            }
+
         }
         return transactions;
     }
 
-    public ArrayList<Transaction> getAllTransactions(String address) {
+    public ArrayList<Transaction> getAllTransactions(String address) throws IOException {
         return this.getTransactionsUntil(address,null);
     }
 

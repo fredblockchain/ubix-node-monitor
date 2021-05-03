@@ -1,15 +1,14 @@
-package com.fred.node.monitor.price.coinmarketcap;
+package com.fred.node.price.coinmarketcap;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fred.node.monitor.price.coinmarketcap.model.*;
+import com.fred.node.price.coinmarketcap.model.*;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,7 +21,7 @@ public class CoinMarketCap {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-    private static String APIkey = "";
+    private String APIkey = "";
 
     public CoinMarketCap(String apiKey) {
         this.APIkey = apiKey;
@@ -45,7 +44,7 @@ public class CoinMarketCap {
         StringBuilder textBuilder = new StringBuilder();
         try (Reader reader = new BufferedReader(new InputStreamReader
                 (response.body().byteStream(), Charset.forName(StandardCharsets.UTF_8.name())))) {
-            int c = 0;
+            int c;
             while ((c = reader.read()) != -1) {
                 textBuilder.append((char) c);
             }

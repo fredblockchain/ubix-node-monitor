@@ -1,5 +1,6 @@
 package com.fred.node.ubix.transactions.sync;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -54,16 +55,17 @@ public class TransactionWatcher {
         try {
             this.checkNewTransactions();
         } catch (Exception e) {
+            log.error("error while checking transactions",e);
             this.statusService.setFailed("UBX", e.getMessage());
         }
-        System.out.println("UBIXTransaction check done");
+        log.info("UBIXTransaction check done");
     }
 
-    private void checkNewTransactions() {
+    private void checkNewTransactions() throws IOException {
 
         this.statusService.setRunning("UBX","synchronization started");
 
-        ArrayList<Transaction> transactions = new ArrayList<Transaction>();
+        ArrayList<Transaction> transactions = new ArrayList<>();
 
         if(this.transactionService.getLastTransaction() == null) {
             log.info("search for transactions for the first time");

@@ -2,20 +2,16 @@ package com.fred.node.app;
 
 import com.fred.node.chain.StatusService;
 import com.fred.node.chain.data.TransactionService;
-import com.fred.node.monitor.MonitorService;
 import com.fred.node.monitor.NotificationService;
-import com.fred.node.monitor.TelegramMonitorBot;
-import com.fred.node.monitor.price.PriceService;
 import com.fred.node.ubix.RewardsService;
-import com.fred.node.ubix.transactions.sync.TransactionWatcher;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.telegram.telegrambots.meta.TelegramBotsApi;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
+
+import javax.sql.DataSource;
 
 @Configuration
 @EnableScheduling
@@ -41,4 +37,15 @@ public class Appconfig {
     @Qualifier("notificationService")
     public NotificationService notificationService() { return new NotificationService();}
 
+    @Bean
+    public DataSource sqliteDataSource(
+            @Value("${db.path}") String dbPath) {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName("org.sqlite.JDBC");
+        dataSource.setUrl("jdbc:sqlite:"+dbPath+"dbtelegrambot.sqlite");
+        dataSource.setUsername("na");
+        dataSource.setPassword("na");
+
+        return dataSource;
+    }
 }

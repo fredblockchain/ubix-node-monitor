@@ -6,6 +6,7 @@ services:
     container_name: ubix-node-monitor
     volumes:
       - ../config:/var/app/config
+      - ../db:/var/app/db/
     environment:
       # SPRING_PROFILES_ACTIVE: set 'log-fluentd' to send logs to local fluentd, 'default' otherwise. NOT TESTED YET
       SPRING_PROFILES_ACTIVE: default

@@ -64,7 +64,8 @@ they may be configured in the traditional application.properties or, if you use 
 * **node.ubix.address:** the public address linked to your node
 * **price.coinmarketcap.apikey:** The API key you have created on your coin Market Cap account
 * **global.time.utc.offset:** UBIX transactions time are in UTC timezone. Set here the number of minutes you want add
-
+* **price.currency.code.iso:** The currency ISO code you want the price to be retrieved from Coin Market Cap
+* **price.currency.sign**: €, $, ...
 ## App use
 The bot provides 4 queries:
 * **/today** access todays reward transactions
@@ -86,4 +87,10 @@ Some ideas to improve the app that I will probably implement soon:
 
 ### 0.1
 First version with basic functionality
+
+### 0.2
+Added new stuff:
+### price related
+1. You can now choose the fiat currency you want the price to be retrieved from CoinMarketCap: set the iso code with property **price.currency.code.iso**, the price will be 
+2. You can set the symbol to be shown in notifications: set property **price.currency.sign**
 
