@@ -32,7 +32,7 @@ public class PriceService {
         this.fiatIsoCode = fiatIso;
     }
 
-    @Scheduled(fixedDelay = 60000) // in milliseconds
+    @Scheduled(fixedDelay = 1800000) // in milliseconds
     public void checkPrices (){
         double priceCMC = 0;
         try {
