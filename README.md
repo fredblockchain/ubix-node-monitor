@@ -65,7 +65,7 @@ they may be configured in the traditional application.properties or, if you use 
 * **price.coinmarketcap.apikey:** The API key you have created on your coin Market Cap account
 * **global.time.utc.offset:** UBIX transactions time are in UTC timezone. Set here the number of minutes you want add
 * **price.currency.code.iso:** The currency ISO code you want the price to be retrieved from Coin Market Cap
-* **price.currency.sign**: €, $, ...
+
 ## App use
 The bot provides 4 queries:
 * **/today** access todays reward transactions
@@ -79,8 +79,7 @@ The bot will also send a notification when new transactions are detected. Please
 ### Next steps
 Some ideas to improve the app that I will probably implement soon:
 * Use Fluentd as a log gateway (in my case to use Kibana as central log repo)
-* Add currency conversion
-* Use SQLite to implement persistence (instead of the current on memory Arraylist)
+* Use SQLite to implement persistence for transactions (instead of the current on memory Arraylist)
 * Add more info available in the bot
 * Improve telegram messages by using Markdown format instead of plain text
 * Optimise docker image size
@@ -90,7 +89,6 @@ First version with basic functionality
 
 ### 0.2
 Added new stuff:
-### price related
-1. You can now choose the fiat currency you want the price to be retrieved from CoinMarketCap: set the iso code with property **price.currency.code.iso**, the price will be 
-2. You can set the symbol to be shown in notifications: set property **price.currency.sign**
-
+1. You can now choose the fiat currency you want the price to be retrieved from CoinMarketCap: set the iso code with property **price.currency.code.iso**
+2. Introducing persistence in the app: now uses a SQLite DB
+3. Price is retrieved every 15 minutes and stored in DB
