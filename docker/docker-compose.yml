@@ -4,6 +4,7 @@ services:
     build: .
     image: fredi/ubix-node-monitor
     container_name: ubix-node-monitor
+    restart: unless-stopped
     volumes:
       - ../config:/var/app/config
       - ../db:/var/app/db/
