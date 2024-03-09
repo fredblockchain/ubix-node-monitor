@@ -126,7 +126,11 @@ public class TelegramMonitorBot extends TelegramLongPollingBot {
     public void notifyTransactions(ArrayList<Transaction> transactions) {
         String message = "New transaction(s):\n";
         for(Transaction t: transactions) {
-            message += "   "+t.getValue()+"\n";
+            if("Coin Base".equals(t.getFromAddr()) ) {
+                message += "   " + t.getValue() + "\n";
+            } else {
+                log.info("Notification: ignoring transaction " + t.getId());
+            }
         }
         this.sendMsg(chatID, message);
     }
