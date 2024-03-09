@@ -44,7 +44,7 @@ public class MonitorService {
     public DailySummary getLastDays(long days) {
         ArrayList<DaySummary> res = new ArrayList<>();
 
-        for(int i = 0; i<days; i++) {
+        for(int i = 1; i<(days+1); i++) {
             DayDetail dd = this.rewardsService.getInfoForDay(i);
             long total = 0;
             for(Reward r: dd.getRewards()) {
