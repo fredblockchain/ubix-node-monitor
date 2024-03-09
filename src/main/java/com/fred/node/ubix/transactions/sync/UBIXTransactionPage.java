@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class UBIXTransactionPage {
-    private static String BASE_URL = "https://explorer.ubikiri.com/api/Address/";
+    private static String BASE_URL = "https://explorer.ubikiri.com/api/address/";
 
     private long pageNb;
     private String address;
