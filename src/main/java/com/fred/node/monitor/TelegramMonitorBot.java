@@ -128,7 +128,9 @@ public class TelegramMonitorBot extends TelegramLongPollingBot {
         for(Transaction t: transactions) {
             if("Coin Base".equals(t.getFromAddr()) ) {
                 message += "   " + t.getValue() + "\n";
-            } else {
+            } else if("109129a92fc93151e9d9f203a983a3fd3aa6f0fb".equals(t.getFromAddr()) ) {
+                message += "   " + t.getValue() + " (airdrop)\n";
+            }else {
                 log.info("Notification: ignoring transaction " + t.getId());
             }
         }
