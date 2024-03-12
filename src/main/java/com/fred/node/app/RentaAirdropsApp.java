@@ -36,7 +36,7 @@ public class RentaAirdropsApp  implements ApplicationListener<ApplicationReadyEv
 
     }
 
-    public static void main(String[] args) {
+    public static void main_(String[] args) {
 
         SpringApplication.run(RentaAirdropsApp.class);
 
