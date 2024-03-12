@@ -18,13 +18,13 @@ Thanks to [Ruben Bermudez](https://github.com/rubenlagus) for his great [Telegra
 ### Disclaimer
 * This software is provided with no guarantee of any sort, the user of this software is responsible for anything that can happen using it
 * The author of this app has no link with UBIX team
-* The author of this app has no obligation to update it in case of change on UBIX network side or in any of the library used in the app (spring, telagram bot API, etc)
+* The author of this app has no obligation to update it in case of change on UBIX network side or in any of the library used in the app (spring, telegram bot API, etc)
 * This app doesn't require your UBIX private key or keystore file, only the public address connected to your node and no one related to this app will ever ask you for personal information.
-* Being a personal project, I may include functionality in the future to cover some very specific needs, although I will try to make then de activable
+* Being a personal project, I may include functionality in the future to cover some very specific a personal needs, although I will try to make then de activable
 
 ### IMPORTANT: security
-This app runs without needing access to your node. the only link to the node is the public address, which can be accessed from anywhere.
-In order to keep you node safe I recommend no to run this app or any other application in the same server. 
+This app runs without requiring access to your node. the only link to the node is the wallet address and all the data is retrieved from the ubikiri explorer.
+In order to keep you node safe I recommend no to run this app (or any other application btw) in a different server. 
 
 ### Project background
 I don't have an extended experience in java/spring development and at using platforms like Docker, so there may be a lot of best practices to apply to this project.
@@ -92,3 +92,8 @@ Added new stuff:
 1. You can now choose the fiat currency you want the price to be retrieved from CoinMarketCap: set the iso code with property **price.currency.code.iso**
 2. Introducing persistence in the app: now uses a SQLite DB
 3. Price is retrieved every 15 minutes and stored in DB
+
+### 0.3
+1. ubx airdrops are flagged as such
+2. transactions that "group" un-spent coins are ignored
+3. reward history for the last 7 days don't show the current (and incomplete) day anymore
