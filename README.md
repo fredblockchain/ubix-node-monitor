@@ -24,7 +24,7 @@ Thanks to [Ruben Bermudez](https://github.com/rubenlagus) for his great [Telegra
 
 ### IMPORTANT: security
 This app runs without requiring access to your node. the only link to the node is the wallet address and all the data is retrieved from the ubikiri explorer.
-In order to keep you node safe I recommend no to run this app (or any other application btw) in a different server. 
+In order to keep you node safe I recommend no to run this app (or any other application, for that matter) in the same server as your node.
 
 ### Project background
 I don't have an extended experience in java/spring development and at using platforms like Docker, so there may be a lot of best practices to apply to this project.
